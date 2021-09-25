@@ -27,14 +27,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     public static final String TAG = "MainActivity";
 
-
-
     List <Movie> movies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
 
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
@@ -43,14 +42,11 @@ public class MainActivity extends AppCompatActivity {
         // Create adapter
         Movieadapter movieAdapter = new Movieadapter(this, movies);
 
-
         // Set the adapter on the recyclerview
         rvMovies.setAdapter(movieAdapter);
 
         // Set a layout Manager
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
-
-
 
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -78,5 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "onFailure");
             }
         });
+
+
     }
+
+
 }
